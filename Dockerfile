@@ -1,12 +1,7 @@
-FROM python:3.8 as base
-WORKDIR /app
-ENV LC_ALL=C.UTF-8
+FROM python:3.9
 
-RUN apt update && \
-    pip install poetry==1.1.6
-
-COPY poetry.lock pyproject.toml ./
-RUN poetry install --no-dev
-
-COPY . .
-CMD ["poetry", "run", "python", "run.py"]
+WORKDIR /
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+COPY run.py ./
+CMD [ "python3","run.py"]

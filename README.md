@@ -1,33 +1,10 @@
-# 概要
-deepl-botはslackのメッセージにリアクションして翻訳するslack-botです。DeepLAPIを利用しています。v0.4現在、日本語、イギリス英語、アメリカ英語、中国語に対応しています。
+ビルド
+docker build . -t bolt-docker  
+
+docker run
+docker run -it -d --name slack-messages bolt-docker 
 
 
-# 環境構築
-pyproject.tomlに記述されているモジュールをインストールする必要があります。
-cloneした階層に移動し下記コードを実行してください
-```
-poetry install
-```
-# 使い方
-翻訳したいメッセージ対してフラグのリアクションします
-
-![](./docs/preview.png)
-
-|言語|フラグ|言語表現|
-|---|---|---|
-|日本語|:jp:|JA|
-|イギリス英語|:gb:|EN-GB|
-|アメリカ英語|:us:|EN-US|
-|中国語|:cn:|ZH|
-
-元となる言語は自動判定です
-
-# ローカルで動かす場合
-
-```
-SLACK_BOT_TOKEN=<slack_bot_token> \
-SLACK_APP_TOKEN=<slack_app_token> \
-DEEPL_API_TOKEN=<deepl_api_token> \
-poetry run python run.py
-```
-
+export SLACK_BOT_TOKEN=xoxb-4051031086081-4051041571265-qH8YDWZOetmdkG1iBIUIOH1a   
+export SLACK_APP_TOKEN=xapp-1-A041H0YHNFK-4077265939473-c1b5f6da64228277f3bfd57e124407adf5913a7a8a662968e374f77cc266ae6e
+export DEEPL_API_TOKEN=d857ebc3-1537-41ac-968f-e280bcb43793    
