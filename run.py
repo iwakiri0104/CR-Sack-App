@@ -61,6 +61,7 @@ def show_datepicker(event, say: Say):
         query += f">{m}\n"
     say(text=f"{query}{result.text}", thread_ts=replies["messages"][0].get("thread_ts"))
 
+logging.basicConfig(level=logging.DEBUG)
 
 if __name__ == "__main__":
     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
