@@ -16,7 +16,7 @@ translator = deepl.Translator(DEEPL_API_TOKEN)
 logging.basicConfig(level=logging.DEBUG)
 
 languages = {
-    "jp": "JA",  # Japanese
+    "jp": "JA",  # Japaneses
     "us": "EN-US",  # American
     "gb": "EN-GB",  # British
     "cn": "ZH",  # Chinese
@@ -62,14 +62,6 @@ def show_datepicker(event, say: Say):
     say(text=f"{query}{result.text}", thread_ts=replies["messages"][0].get("thread_ts"))
 
 
-from slack_bolt.adapter.socket_mode import SocketModeHandler
-handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
-# Use connect() method as start() blocks the current thread
-handler.connect()
-
-
-#
-# Web App
-#
-from flask import Flask, request
-flask_app = Flask(__name__)
+if __name__ == "__main__":
+    handler = SocketModeHandler(app, SLACK_APP_TOKEN)
+    handler.start()
